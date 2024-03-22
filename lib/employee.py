@@ -19,6 +19,36 @@ class Employee:
             f"<Employee {self.id}: {self.name}, {self.job_title}, " +
             f"Department ID: {self.department_id}>"
         )
+    
+    @property
+    def name(self):
+        return self._name
+    @name.setter
+    def name(self, name_param):
+        if(isinstance(name_param, str)) and len(name_param):
+            self._name = name_param
+        else:
+            raise ValueError("Name must be a non-empty string")
+        
+    @property
+    def job_title(self):
+        return self._job_title
+    @job_title.setter
+    def job_title(self, job_title_param):
+        if(isinstance(job_title_param, str)) and len(job_title_param):
+            self._job_title = job_title_param
+        else:
+            raise ValueError("Job Title must be a non-empty string")
+        
+    @property
+    def department_id(self):
+        return self._department_id
+    @department_id.setter
+    def department_id(self, department_id_param):
+        if(isinstance(department_id_param, int)) and Department.find_by_id(department_id_param):
+            self._department_id = department_id_param
+        else:
+            raise ValueError("department_id must reference a department in the database")
 
     @classmethod
     def create_table(cls):

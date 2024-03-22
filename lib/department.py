@@ -14,6 +14,26 @@ class Department:
 
     def __repr__(self):
         return f"<Department {self.id}: {self.name}, {self.location}>"
+    
+    @property
+    def name(self):
+        return self._name
+    @name.setter
+    def name(self, name_param):
+        if(isinstance(name_param, str)) and len(name_param):
+            self._name = name_param
+        else:
+            raise ValueError("Name must be a non-empty string")
+        
+    @property
+    def location(self):
+        return self._location
+    @location.setter
+    def location(self, location_param):
+        if(isinstance(location_param, str)) and len(location_param):
+            self._location = location_param
+        else:
+            raise ValueError("Location must be a non-empty string")
 
     @classmethod
     def create_table(cls):
